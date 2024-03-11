@@ -2,8 +2,7 @@ export default class Todos {
     constructor(name, dueDate = 'No date', description, priority) {
         this.name = name,
         this.dueDate = dueDate,
-        this.description = description,
-        this.priority = priority
+        this.description = description
     };
 
     setName(name) {
@@ -18,10 +17,6 @@ export default class Todos {
         this.description = description;
     };
 
-    setPriority(priority) {
-        this.priority = priority;
-    };
-
     getName() {
         return this.name;
     };
@@ -32,10 +27,6 @@ export default class Todos {
 
     getDescription() {
         return this.description;
-    };
-
-    getPriority() {
-        return this.priority;
     };
 
     getDateFormatted() {
