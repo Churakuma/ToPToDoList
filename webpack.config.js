@@ -6,6 +6,7 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
+    clean: true,
   },
   module: {
     rules: [
@@ -22,8 +23,7 @@ module.exports = {
   mode: 'none',
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
-      filename: 'index.html',
+      title: 'To-Do List',
       scriptLoading: 'defer'
     }),
   ],
