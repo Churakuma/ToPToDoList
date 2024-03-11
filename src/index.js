@@ -1,2 +1,4 @@
-console.log('test bundling');
+import UI from "./modules/UI";
+import './style.css'
 
+document.addEventListener('DOMContentLoaded', UI.loadHomePage);

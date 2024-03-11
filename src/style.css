@@ -16,8 +16,9 @@
     --fs-200: 0.875rem;
 
     /* Colors */
-    --bg-primary: rgb(207, 211, 223);
-    --bg-secondary: rgb(204, 204, 204);
+    --bg-primary: rgb(246, 247, 250);
+    --bg-secondary: rgb(179, 179, 179);
+    --bg-accent: rgb(105, 105, 105);
     --clr-primary: rgb(73, 77, 198);
     --clr-secondary: rgb(129, 132, 237);
     --clr-accent: rgb(77, 82, 252);
@@ -87,4 +88,18 @@ body {
 
 .hidden{
     display: none;
+}
+
+/* Header */
+
+.header {
+    background-color: var(--bg-accent);
+    margin: 0px 0px 16px 0px;
+    padding: 24px 0px 24px 24px;
+}
+
+/* Sidebar */
+
+#projects__sidebar {
+    background-color: var(--bg-secondary);
 }
