@@ -1,8 +1,9 @@
-import Todos from './Todos.js';
 import Project from './Project.js';
+import Todos from './todos.js';
 
 export default class UI {
     static contentContainer = document.getElementById('content');
+    static projects = [];
 
     static sampleDataTasks() {
         // Create some Todos
@@ -18,6 +19,8 @@ export default class UI {
         console.log(project1.getName()); // Output: Project 1
         console.log(project1.getTasks()); // Output: [todo1, todo2]
 
+        this.projects.push(project1);
+
         return project1;
     }
 
@@ -25,33 +28,49 @@ export default class UI {
     static loadHomePage() {
         var testProject = UI.sampleDataTasks();
         UI.loadProject(testProject);
+        UI.loadNavbar();
         
     };
 
-    // Project UI
-    static openProject() {
+    // Load navbar
+    static loadNavbar() {
+        const navbarContainer = document.getElementById('projects__container');
+        navbarContainer.innerHTML = '';
 
+        // Loop through projects and create clickable divs
+        this.projects.forEach(project => {
+            const projectDiv = document.createElement('div');
+            projectDiv.textContent = project.getName();
+            projectDiv.classList.add('project-link');
+            projectDiv.addEventListener('click', () => {
+                // Load project when clicked
+                UI.loadProject(project);
+            });
+            navbarContainer.appendChild(projectDiv);
+        });
     };
 
+    // Project UI
     static loadProject(project) {
+        const projectTasksContainer = document.getElementById('task__list');
+        projectTasksContainer.innerHTML = '';
+    
         const projectName = document.createElement('p');
         projectName.textContent = project.getName();
-        this.contentContainer.appendChild(projectName);
-
-        const projectTasksContainer = document.createElement('div');
-        projectTasksContainer.classList.add('task__list');
-        this.contentContainer.appendChild(projectTasksContainer);
+        projectTasksContainer.appendChild(projectName); // Append projectName to projectTasksContainer
+    
         const projectTasks = project.getTasks();
         projectTasks.forEach(task => {
             var taskItem = UI.loadTask(task);
             taskItem.classList.add('task__item');
             projectTasksContainer.appendChild(taskItem);
         });
-
     }
+    
 
     // Tasks UI
     static loadTask(task) {
+
         const taskButton = document.createElement('div');
         const taskName = document.createElement('p');
         taskName.classList.add('task__name');

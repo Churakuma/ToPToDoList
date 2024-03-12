@@ -99,6 +99,6 @@ body {
 
 /* Sidebar */
 
-#projects__sidebar {
+#projects__navbar {
     background-color: var(--bg-secondary);
 }

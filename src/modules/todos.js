@@ -1,5 +1,5 @@
 export default class Todos {
-    constructor(name, dueDate = 'No date', description, priority) {
+    constructor(name, dueDate = 'No date', description) {
         this.name = name,
         this.dueDate = dueDate,
         this.description = description
