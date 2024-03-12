@@ -95,12 +95,28 @@ body {
 .header {
     background-color: var(--bg-accent);
     padding: 24px 0px 24px 24px;
+    
+    h1 {
+        color: var(--font-dark);
+    }
+}
+
+/* Layout */
+.to__do__list__container {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: repeat(5, 1fr);
+    
 }
 
 /* Sidebar */
 
 #projects__navbar {
     background-color: var(--bg-secondary);
+
+    button {
+        border: none;
+    }
 
     #add__project {
         display: none;
