@@ -101,4 +101,13 @@ body {
 
 #projects__navbar {
     background-color: var(--bg-secondary);
+
+    #add__project {
+        display: none;
+    }
+}
+
+/* Content */
+#add__task {
+    display: none;
 }

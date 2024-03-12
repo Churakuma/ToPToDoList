@@ -29,7 +29,7 @@ export default class UI {
         var testProject = UI.sampleDataTasks();
         UI.loadProject(testProject);
         UI.loadNavbar();
-        
+        UI.addEventListeners();
     };
 
     // Load navbar
@@ -51,6 +51,9 @@ export default class UI {
     };
 
     // Project UI
+    static addProjectModal = document.getElementById('add__project');
+    static addProjectButton = document.getElementById('add__project__button');
+
     static loadProject(project) {
         const projectTasksContainer = document.getElementById('task__list');
         projectTasksContainer.innerHTML = '';
@@ -65,10 +68,16 @@ export default class UI {
             taskItem.classList.add('task__item');
             projectTasksContainer.appendChild(taskItem);
         });
+    };
+
+    static openAddProjectModal() {
+        this.addProjectModal.style.display = 'flex';
     }
-    
 
     // Tasks UI
+    static addTaskModal = document.getElementById('add__task');
+    static addTaskButton = document.getElementById('add__task__button');
+
     static loadTask(task) {
 
         const taskButton = document.createElement('div');
@@ -88,5 +97,42 @@ export default class UI {
         taskButton.appendChild(taskDescription);
 
         return taskButton;
+    };
+
+    static openAddTaskModal() {
+        this.addTaskModal.style.display = 'flex';
     }
+
+    // Add Button Event Listeners
+    static addEventListeners() {
+
+        this.addProjectButton.addEventListener('click', () => {
+            this.openAddProjectModal();
+        });
+
+        this.addTaskButton.addEventListener('click', () => {
+            this.openAddTaskModal();
+        })
+
+        // If user clicks outside of modal, close the modal
+        window.addEventListener('click', (event) => {
+            const addTaskModal = document.getElementById('add__task');
+            const addProjectModal = document.getElementById('add__project');
+            const addProjectButton = document.getElementById('add__project__button');
+        
+            if (event.target !== addTaskModal && event.target !== addProjectModal && event.target !== addProjectButton) {
+                addTaskModal.style.display = 'none';
+                addProjectModal.style.display = 'none';
+            }
+        });
+        
+        // Prevent click propagation when clicking the add__project__button
+        this.addProjectButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+        
+        this.addTaskButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+    };
 }
